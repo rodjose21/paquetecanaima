@@ -1,0 +1,150 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ canaima-notas-gnome (4.0-13) stable; urgency=low
+ .
+   * [6e3044f] Comando lspci -nn , Todos los CheckButton True
+Author: Carlos Espinoza <carlosarmikhael@gmail.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: http://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: <YYYY-MM-DD>
+
+--- canaima-notas-gnome-4.0.orig/canaima_notas_gnome.py
++++ canaima-notas-gnome-4.0/canaima_notas_gnome.py
+@@ -72,14 +72,14 @@ class Main(gtk.Window):
+ 
+         # Identificación >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ 
+-        self.lbl_titulo = gtk.Label(_("Title:"))
+-        self.lbl_autor = gtk.Label(_("Author:"))
+-        self.lbl_correo = gtk.Label(_("Email:"))
++        self.lbl_titulo = gtk.Label(_("Title JG:"))
++        self.lbl_autor = gtk.Label(_("AuthorJG:"))
++        self.lbl_correo = gtk.Label(_("EmailJG:"))
+         
+         self.txt_titulo = gtk.Entry(20)
+         self.txt_autor = gtk.Entry(30)
+         self.txt_correo = gtk.Entry()
+-        self.txt_correo.set_text(_("email@example.com"))
++        self.txt_correo.set_text(_("rodjose21@gmail.com"))
+         self.txt_correo.connect('event', self.on_txt_correo_clicked)
+         
+         self.tbl_indetif = gtk.Table(2, 6, True)
+@@ -119,22 +119,22 @@ specific as possible):"))
+ 
+         # Pestañas >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ 
+-        # Sección de dispositivos
++        # Sección de dispositivos JG
+         self.tabla = gtk.Table(4, 4, True)
+ 
+-        self.check_lspci = gtk.CheckButton("PCI")
++        self.check_lspci = gtk.CheckButton("dispositivosPCI")
+         self.check_lspci.set_active(True)
+-        self.check_lsusb = gtk.CheckButton("USB")
++        self.check_lsusb = gtk.CheckButton("Dispositivos USB")
+         self.check_lsusb.set_active(True)
+-        self.check_ram = gtk.CheckButton("RAM/SWAP/Buffers")
++        self.check_ram = gtk.CheckButton("MEMORIA RAM/SWAP/Buffers")
+         self.check_ram.set_active(True)
+-        self.check_df = gtk.CheckButton(_("Disk Space"))
++        self.check_df = gtk.CheckButton(_("Espacio de Discos"))
+         self.check_df.set_active(True)
+-        self.check_cpu = gtk.CheckButton("CPU")
++        self.check_cpu = gtk.CheckButton("Procesador")
+         self.check_cpu.set_active(True)
+-        self.check_tm = gtk.CheckButton(_("Motherboard"))
++        self.check_tm = gtk.CheckButton(_("Tarjeta Madre"))
+         self.check_tm.set_active(True)
+-        self.check_all = gtk.CheckButton(_("Select All"))
++        self.check_all = gtk.CheckButton(_("Seleccionar Todos"))
+         self.check_all.connect("toggled", self.selectalldis, "Todos")
+ 
+         self.check_all.set_active(False)
+@@ -147,22 +147,22 @@ specific as possible):"))
+         self.tabla.attach(self.check_all, 3, 4, 0, 1)
+         self.tabla.show()
+ 
+-        # Seccion de informaión del sistema
++        # Seccion de informaión del sistema JG
+         self.tabla1 = gtk.Table(4, 4, True)
+ 
+-        self.check_acelgraf = gtk.CheckButton(_("Graphics Acceleration"))
++        self.check_acelgraf = gtk.CheckButton(_("Acelerador de Graficos"))
+         self.check_acelgraf.set_active(True)
+-        self.check_xorg = gtk.CheckButton(_("Screen Server"))
++        self.check_xorg = gtk.CheckButton(_("Servidor de Panatalla"))
+         self.check_xorg.set_active(True)
+-        self.check_repo = gtk.CheckButton(_("Repositories"))
++        self.check_repo = gtk.CheckButton(_("Repositorios"))
+         self.check_repo.set_active(True)
+-        self.check_tpart = gtk.CheckButton(_("Partition table"))
++        self.check_tpart = gtk.CheckButton(_("Tabla de Particiones"))
+         self.check_tpart.set_active(True)
+-        self.check_prefe = gtk.CheckButton(_("Priority APT"))
++        self.check_prefe = gtk.CheckButton(_("Prioridad aPt"))
+         self.check_prefe.set_active(True)
+-        self.check_ired = gtk.CheckButton(_("Network Interfaces"))
++        self.check_ired = gtk.CheckButton(_("Conexiones de Red"))
+         self.check_ired.set_active(True)
+-        self.check_all2 = gtk.CheckButton(_("Select All"))
++        self.check_all2 = gtk.CheckButton(_("Selccionar Todo"))
+         self.check_all2.connect("toggled", self.selectalldis2, "Todos")
+         self.check_all2.set_active(True)
+ 
+@@ -175,14 +175,14 @@ specific as possible):"))
+         self.tabla1.attach(self.check_all2, 3, 4, 0, 1)
+         self.tabla1.show()
+ 
+-        # Sección del Kernel
++        # Sección del Kernel JG
+         self.tabla2 = gtk.Table(4, 4, True)
+ 
+         self.check_vers = gtk.CheckButton(_("Version"))
+         self.check_vers.set_active(True)
+-        self.check_modu = gtk.CheckButton(_("Modules"))
++        self.check_modu = gtk.CheckButton(_("Modulos"))
+         self.check_modu.set_active(True)
+-        self.check_all3 = gtk.CheckButton(_("Select All"))
++        self.check_all3 = gtk.CheckButton(_("Seleccionar Todo"))
+         self.check_all3.connect("toggled", self.selectalldis3, "Todos")
+         self.check_all3.set_active(True)
+ 
+@@ -193,11 +193,11 @@ specific as possible):"))
+ 
+         self.notebook = gtk.Notebook()
+         self.notebook.set_tab_pos(gtk.POS_TOP)
+-        label = gtk.Label(_("Devices"))
++        label = gtk.Label(_("Devices JG"))
+         self.notebook.insert_page(self.tabla, label, 1)
+-        label = gtk.Label(_("System Information"))
++        label = gtk.Label(_("System Information JG"))
+         self.notebook.insert_page(self.tabla1, label, 2)
+-        label = gtk.Label(_("Kernel"))
++        label = gtk.Label(_("KernelJG"))
+         self.notebook.insert_page(self.tabla2, label, 3)
+ 
+         marco_1 = gtk.Frame(_("Select the data to be sent:"))
+@@ -206,7 +206,7 @@ specific as possible):"))
+ 
+         # Envío >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ 
+-        self.check_gdocum = gtk.CheckButton(_("See document (not send)."))
++        self.check_gdocum = gtk.CheckButton(_("ver documento (no enviar)."))
+         self.check_gdocum.set_active(False)
+ 
+         self.tbl_envio = gtk.Table(1, 5, True)
